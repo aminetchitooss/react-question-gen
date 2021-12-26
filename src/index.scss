@@ -1,0 +1,72 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --primary: #0071ba;
+  font-family: "Roboto", sans-serif;
+}
+
+#root {
+  height: 100%;
+  background-color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.activeLink {
+  color: var(--primary) !important;
+  &::after {
+    background-color: var(--primary) !important;
+    width: 80px !important;
+  }
+}
+
+.btn {
+  border-radius: 40px;
+  height: 48px;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  background-color: white;
+  padding: 0 1rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.filled {
+  background-color: var(--primary);
+  color: white;
+}
+
+.footer {
+  background-image: url("./assets/wave.svg");
+  background-repeat: no-repeat;
+  background-position: 1vh -5vh;
+  background-size: 100%;
+  height: 100%;
+  width: 100%;
+  transition-duration: 0.7s;
+}
+
+.footer.opened {
+  background-position: 1vh -25vh;
+  transition-delay: 0.4s;
+  transition-timing-function: ease-out;
+}
+
+.footer.closed {
+  background-position: 1vh -5vh;
+  transition-timing-function: ease-in;
+}
