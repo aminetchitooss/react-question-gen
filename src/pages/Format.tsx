@@ -65,7 +65,7 @@ export default function Format() {
   return (
     <StyledDiv>
       <label htmlFor="code">Code:</label>
-      <textarea onChange={(val) => handleChange(val)} placeholder="Paste </> here" value={code} name="code" id="code" cols={30} rows={10}></textarea>
+      <textarea onChange={(val) => handleChange(val)} placeholder="Paste </> here" value={code} name="code" id="code" cols={30} rows={10} autoComplete="off"></textarea>
       <button onClick={handleModal} className="btn filled">
         Convert to json
       </button>

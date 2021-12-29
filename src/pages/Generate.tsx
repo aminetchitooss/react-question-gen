@@ -77,11 +77,11 @@ export default function Generate() {
     <FormProvider {...methods}>
       <form className="form" onSubmit={onSubmit}>
         <label htmlFor="title">Title* :</label>
-        <input type="text" id="title" {...methods.register("title")} />
+        <input type="text" id="title" {...methods.register("title")} autoComplete="off" />
         {errors["title"] && <p className="error">{errors["title"].message}</p>}
 
         <label htmlFor="desc">Description* :</label>
-        <textarea id="desc" cols={30} rows={10} {...methods.register("description")}></textarea>
+        <textarea id="desc" cols={30} rows={10} {...methods.register("description")} autoComplete="off"></textarea>
         {errors["description"] && <p className="error">{errors["description"].message}</p>}
 
         <section>
@@ -105,7 +105,7 @@ export default function Generate() {
         </StyledBtn>
 
         <InfoModal message="Congrats !!" ref={modalRef}>
-          <textarea ref={InputRef} cols={30} rows={10} defaultValue={Values}></textarea>
+          <textarea ref={InputRef} cols={30} rows={10} defaultValue={Values} autoComplete="off"></textarea>
           <div className="around">
             <button type="button" className="btn" onClick={closeModal}>
               Close

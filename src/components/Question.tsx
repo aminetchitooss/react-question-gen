@@ -32,14 +32,14 @@ const Question = forwardRef<QuestionHandle, QuestionProps>(({ index }: QuestionP
   return (
     <section>
       <label>Question* :</label>
-      <input {...register(`questions[${index}].lib`)} />
+      <input {...register(`questions[${index}].lib`)} autoComplete="off" />
       {errors?.questions?.[index]?.lib && <p className="error">{(errors?.questions?.[index]?.lib as any).message}</p>}
 
       {fields.map((item, i) => (
         <div key={item.id} className="answers">
           <div className="block">
             <label>Answer* :</label>
-            <input {...register(`questions[${index}].items[${i}].label`)} />
+            <input {...register(`questions[${index}].items[${i}].label`)} autoComplete="off" />
             {errors?.questions?.[index]?.items?.[i]?.label && <p className="error">{(errors?.questions?.[index]?.items?.[i]?.label as any).message}</p>}
           </div>
           <div>
@@ -65,11 +65,11 @@ const Question = forwardRef<QuestionHandle, QuestionProps>(({ index }: QuestionP
       ))}
 
       <label className="spacer">feedback for correct answer* :</label>
-      <input type="text" {...register(`questions[${index}].feedbacks[0].label`)} />
+      <input type="text" {...register(`questions[${index}].feedbacks[0].label`)} autoComplete="off" />
       {errors?.questions?.[index]?.feedbacks?.[0]?.label && <p className="error">{(errors?.questions?.[index]?.feedbacks?.[0]?.label as any).message}</p>}
 
       <label>feedback for incorrect answer* :</label>
-      <input type="text" {...register(`questions[${index}].feedbacks[1].label`)} />
+      <input type="text" {...register(`questions[${index}].feedbacks[1].label`)} autoComplete="off" />
       {errors?.questions?.[index]?.feedbacks?.[1]?.label && <p className="error">{(errors?.questions?.[index]?.feedbacks?.[1]?.label as any).message}</p>}
 
       <input type="text" className="hide" defaultValue="true" {...register(`questions[${index}].feedbacks[0].value`)} />
