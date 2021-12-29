@@ -11,6 +11,7 @@ body,
 :root {
   --primary: #0071ba;
   --danger: #eb4a4a;
+  --accent: #767676;
   font-family: "Montserrat", sans-serif;
   background-color: white;
 }
@@ -64,9 +65,15 @@ $space: 35px;
     margin-top: 2rem;
   }
 
-  &.end {
-    align-self: flex-end;
+  &.accent {
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    margin-right: 2rem;
   }
+}
+
+.end {
+  align-self: flex-end;
 }
 
 .filled {

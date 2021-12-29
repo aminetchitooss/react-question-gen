@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm, useFieldArray, FormProvider } from "react-hook-form";
-import { Inputs, schema, defaultValues } from "../utils/FormData";
+import { Inputs, schema, pristineFormValues, setDataLocally, checkSavedData } from "../utils/FormData";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled, { css } from "styled-components";
 import Question, { QuestionHandle } from "../components/Question";
@@ -29,13 +29,22 @@ const StyledModalBtn = styled.button`
 export default function Generate() {
   const [Values, setValues] = useState("{}");
   const [isCopied, setisCopied] = useState(false);
-  const methods = useForm<Inputs>({ defaultValues, resolver: yupResolver(schema), mode: "onChange" });
+  const methods = useForm<Inputs>({ defaultValues: checkSavedData(), resolver: yupResolver(schema), mode: "onChange" });
 
   const {
     control,
     handleSubmit,
-    formState: { errors, isValid }
+    formState: { errors, isValid },
+    reset,
+    watch
   } = methods;
+
+  const watchAllFields = watch();
+
+  useEffect(() => {
+    const subscription = watch((value) => setDataLocally(value));
+    return () => subscription.unsubscribe();
+  }, [watchAllFields]);
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -72,6 +81,10 @@ export default function Generate() {
     modalRef.current?.closeModal();
   };
 
+  const clearForm = () => {
+    reset(pristineFormValues);
+  };
+
   return (
     <FormProvider {...methods}>
       <form className="form" onSubmit={onSubmit}>
@@ -99,9 +112,14 @@ export default function Generate() {
         </section>
         {fields.length === 0 && <p className="error">You need to add at least one question</p>}
 
-        <StyledBtn className="btn filled end" unvalid={!isValid}>
-          Validate
-        </StyledBtn>
+        <div className="end">
+          <button type="button" onClick={clearForm} className="btn accent">
+            Clear
+          </button>
+          <StyledBtn className="btn filled" unvalid={!isValid}>
+            Validate
+          </StyledBtn>
+        </div>
 
         <InfoModal message="Congrats !!" ref={modalRef}>
           <textarea ref={InputRef} cols={30} rows={10} defaultValue={Values} autoComplete="off"></textarea>

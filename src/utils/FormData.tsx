@@ -52,7 +52,7 @@ export const schema = yup.object().shape({
     )
 });
 
-export const defaultValues = {
+export const pristineFormValues = {
   title: "",
   description: "",
 
@@ -67,3 +67,16 @@ export const defaultValues = {
     }
   ]
 };
+
+export function checkSavedData(): Inputs {
+  const data = localStorage["saved"] ?? "";
+  if (!data) {
+    return pristineFormValues;
+  }
+  return JSON.parse(data);
+}
+
+export function setDataLocally(data): void {
+  const val = JSON.stringify(data, null, 2);
+  localStorage["saved"] = val;
+}
