@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
+import { InfoModalHandle, InfoModal } from "../components/InfoModal";
 import { Quiz } from "../utils/colors";
 
 const StyledDiv = styled.div`
@@ -21,6 +22,8 @@ const StyledDiv = styled.div`
 const vQuiz: Quiz = {} as Quiz;
 export default function Format() {
   const [code, setcode] = useState("");
+
+  const modalRef = useRef<InfoModalHandle>(null);
 
   const handleChange = (val) => {
     setcode(val.target.value);
@@ -54,13 +57,19 @@ export default function Format() {
     // }
   };
 
+  const handleModal = () => {
+    console.log("yep");
+    modalRef.current?.openModal();
+  };
+
   return (
     <StyledDiv>
       <label htmlFor="code">Code:</label>
       <textarea onChange={(val) => handleChange(val)} placeholder="Paste </> here" value={code} name="code" id="code" cols={30} rows={10}></textarea>
-      <button onClick={() => handleClick()} className="btn filled">
+      <button onClick={handleModal} className="btn filled">
         Convert to json
       </button>
+      <InfoModal message="This feature is not yet available" ref={modalRef} />
     </StyledDiv>
   );
 }

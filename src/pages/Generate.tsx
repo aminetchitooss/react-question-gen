@@ -1,9 +1,10 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useForm, useFieldArray, FormProvider } from "react-hook-form";
 import { Inputs, schema, defaultValues } from "../utils/FormData";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled, { css } from "styled-components";
 import Question, { QuestionHandle } from "../components/Question";
+import { InfoModal, InfoModalHandle } from "../components/InfoModal";
 
 const StyledBtn = styled.button`
   ${({ unvalid }) =>
@@ -15,14 +16,26 @@ const StyledBtn = styled.button`
       cursor: not-allowed;
     `}
 `;
+const StyledModalBtn = styled.button`
+  ${({ isCopied }) =>
+    isCopied &&
+    css`
+      background-color: teal;
+      border-color: teal;
+      cursor: not-allowed;
+    `}
+`;
 
 export default function Generate() {
+  const [Values, setValues] = useState("{}");
+  const [isCopied, setisCopied] = useState(false);
   const methods = useForm<Inputs>({ defaultValues, resolver: yupResolver(schema), mode: "onChange" });
 
   const {
     control,
     handleSubmit,
-    formState: { errors, isValid }
+    formState: { errors, isValid },
+    getValues
   } = methods;
 
   const { fields, append, remove } = useFieldArray({
@@ -31,16 +44,33 @@ export default function Generate() {
   });
 
   const onSubmit = handleSubmit((values) => {
-    console.log(JSON.stringify(values, null, 2));
+    const val = JSON.stringify(values, null, 2);
+    console.log(val);
+    setValues(val);
+    setisCopied(false);
+    modalRef.current?.openModal();
   });
 
   const childRef = useRef<QuestionHandle>(null);
+  const modalRef = useRef<InfoModalHandle>(null);
+
+  const InputRef = useRef<HTMLTextAreaElement>(null);
 
   const handleAddNewQuestion = () => {
     append({ lib: "" });
     setTimeout(() => {
       childRef.current?.addAnswer();
     }, 10);
+  };
+
+  const copyToClipBoard = () => {
+    InputRef.current?.select();
+    document.execCommand("copy");
+    setisCopied(true);
+  };
+
+  const closeModal = () => {
+    modalRef.current?.closeModal();
   };
 
   return (
@@ -73,6 +103,18 @@ export default function Generate() {
         <StyledBtn className="btn filled end" unvalid={!isValid}>
           Validate
         </StyledBtn>
+
+        <InfoModal message="Congrats !!" ref={modalRef}>
+          <textarea ref={InputRef} cols={30} rows={10} defaultValue={Values}></textarea>
+          <div className="around">
+            <button type="button" className="btn" onClick={closeModal}>
+              Close
+            </button>
+            <StyledModalBtn type="button" className="btn filled" isCopied={isCopied} onClick={copyToClipBoard}>
+              {isCopied ? "Copied" : "Copy to clipboard"}
+            </StyledModalBtn>
+          </div>
+        </InfoModal>
       </form>
     </FormProvider>
   );
