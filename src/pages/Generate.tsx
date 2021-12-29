@@ -39,12 +39,10 @@ export default function Generate() {
     watch
   } = methods;
 
-  const watchAllFields = watch();
-
   useEffect(() => {
     const subscription = watch((value) => setDataLocally(value));
     return () => subscription.unsubscribe();
-  }, [watchAllFields]);
+  }, [watch]);
 
   const { fields, append, remove } = useFieldArray({
     control,
