@@ -1,0 +1,45 @@
+{
+  "_id": 2,
+
+  "type": "QUIZZ",
+
+  "title": "En synthèse",
+
+  "incipit": "Pour mieux comprendre une opération de conduite du changement, reprenons ensemble une notion clé du sujet. ",
+
+  "questions": [
+    {
+      "lib": "<p>Lors d'une transformation d'un processus métier, quelle est la première étape à organiser ?</p>",
+
+      "items": [
+        {
+          "label": "Organisation d'un focus groupe",
+
+          "value": "false"
+        },
+
+        {
+          "label": "Organisation d'entretiens individuels",
+
+          "value": "true"
+        }
+      ],
+
+      "feedbacks": [
+        {
+          "label": "<p>En effet, il est nécessaire de démarrer la transformation d'un processus métier par l'organisation d'un focus groupe puis l'organisation d'entretiens individuels avec chaque collaborateur de manière à décrire leur processus de travail étape par étape puis collaborateur par collaborateur.</p><p>Cela permettra la rédaction d'un cahier des charges qui facilitera l'adoption du nouveau processus par l'ensemble des collaborateurs.</p>",
+
+          "value": "true"
+        },
+
+        {
+          "label": "<p>En êtes-vous sûr ? En effet, il est nécessaire de démarrer la transformation d'un processus métier par l'organisation d'un focus groupe puis l'organisation d'entretiens individuels avec chaque collaborateur de manière à décrire leur processus de travail étape par étape puis collaborateur par collaborateur.</p><p>Cela permettra la rédaction d'un cahier des charges qui facilitera l'adoption du nouveau processus par l'ensemble des collaborateurs.</p>",
+
+          "value": "false"
+        }
+      ]
+    }
+  ],
+
+  "excipit": "Ce quiz vous a permis d'asseoir vos connaissances. Prêts à découvrir d'autres contenus ?"
+}
