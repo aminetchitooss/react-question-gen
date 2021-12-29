@@ -55,7 +55,7 @@ const Question = forwardRef<QuestionHandle, QuestionProps>(({ index }: QuestionP
                 <img src={deleteBtn} alt="deleteBtn" />
               </button>
             )}
-            {fields.length == i + 1 && (
+            {fields.length === i + 1 && (
               <button type="button" onClick={handleAddNewAnswer}>
                 <img src={addBtn} alt="addBtn" />
               </button>

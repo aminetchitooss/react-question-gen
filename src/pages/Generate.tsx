@@ -34,8 +34,7 @@ export default function Generate() {
   const {
     control,
     handleSubmit,
-    formState: { errors, isValid },
-    getValues
+    formState: { errors, isValid }
   } = methods;
 
   const { fields, append, remove } = useFieldArray({
@@ -98,7 +97,7 @@ export default function Generate() {
             Add question
           </button>
         </section>
-        {fields.length == 0 && <p className="error">You need to add at least one question</p>}
+        {fields.length === 0 && <p className="error">You need to add at least one question</p>}
 
         <StyledBtn className="btn filled end" unvalid={!isValid}>
           Validate

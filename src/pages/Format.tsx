@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import styled from "styled-components";
 import { InfoModalHandle, InfoModal } from "../components/InfoModal";
-import { Quiz } from "../utils/colors";
+// import { Quiz } from "../utils/colors";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ const StyledDiv = styled.div`
     margin-bottom: 2rem;
   }
 `;
-const vQuiz: Quiz = {} as Quiz;
+// const vQuiz: Quiz = {} as Quiz;
 export default function Format() {
   const [code, setcode] = useState("");
 
@@ -29,33 +29,33 @@ export default function Format() {
     setcode(val.target.value);
   };
 
-  const handleClick = () => {
-    // console.log(code);
-    const listQstSeg = code.split("QST-");
-    // for (let index = 0; index < listQstSeg.length; index++) {
-    //   const qstFrame = listQstSeg[index];
+  // const handleClick = () => {
+  //   // console.log(code);
+  //   const listQstSeg = code.split("QST-");
+  //   // for (let index = 0; index < listQstSeg.length; index++) {
+  //   //   const qstFrame = listQstSeg[index];
 
-    //   const tmpDoc = document.createElement("div");
-    //   tmpDoc.innerHTML = qstFrame;
+  //   //   const tmpDoc = document.createElement("div");
+  //   //   tmpDoc.innerHTML = qstFrame;
 
-    //   const list = tmpDoc?.querySelectorAll("li p");
-    //   if (list) {
-    //     vQuiz._id= index + 1
-    //     vQuiz.questions=[]
-    //     for (let index = 0; index < list.length; index++) {
-    //       const element = list[index];
-    //       debugger;
-    //       if (element?.querySelector("span")?.style.color == "rgb(112, 173, 71)") {
-    //         // obj._id = index + 1;
-    //         console.log(element);
-    //       }else{
-    //         vQuiz.questions.push({lib})
-    //       }
-    //     }
-    //     listElements.push(obj);
-    //   }
-    // }
-  };
+  //   //   const list = tmpDoc?.querySelectorAll("li p");
+  //   //   if (list) {
+  //   //     vQuiz._id= index + 1
+  //   //     vQuiz.questions=[]
+  //   //     for (let index = 0; index < list.length; index++) {
+  //   //       const element = list[index];
+  //   //       debugger;
+  //   //       if (element?.querySelector("span")?.style.color == "rgb(112, 173, 71)") {
+  //   //         // obj._id = index + 1;
+  //   //         console.log(element);
+  //   //       }else{
+  //   //         vQuiz.questions.push({lib})
+  //   //       }
+  //   //     }
+  //   //     listElements.push(obj);
+  //   //   }
+  //   // }
+  // };
 
   const handleModal = () => {
     console.log("yep");
