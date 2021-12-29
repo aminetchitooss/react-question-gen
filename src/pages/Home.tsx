@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
 
   img {
     height: clamp(200px, 100%, 400px);
-    transition: all 0.7s ease-in-out;
+    transition: transform 0.7s ease-in-out;
     transform: translateX(200%);
     &.closed {
       transform: translateX(200%);
@@ -44,7 +44,7 @@ const StyledIntro = styled.div`
 
   h2,
   .btn {
-    transition: all 0.7s ease-in-out;
+    transition: transform 0.7s ease-in-out;
     transform: translateX(-200%);
     &.closed {
       transform: translateX(-200%);
