@@ -3,7 +3,7 @@ import { useForm, useFieldArray, FormProvider } from "react-hook-form";
 import { Inputs, schema, defaultValues } from "../utils/FormData";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styled, { css } from "styled-components";
-import Question from "../components/Question";
+import Question, { QuestionHandle } from "../components/Question";
 
 const StyledBtn = styled.button`
   ${({ unvalid }) =>
@@ -34,14 +34,12 @@ export default function Generate() {
     console.log(JSON.stringify(values, null, 2));
   });
 
-  const childRef: any = useRef();
+  const childRef = useRef<QuestionHandle>(null);
 
   const handleAddNewQuestion = () => {
     append({ lib: "" });
     setTimeout(() => {
-      if (childRef && childRef.current) {
-        childRef.current.addAnswer();
-      }
+      childRef.current?.addAnswer();
     }, 10);
   };
 
@@ -59,7 +57,7 @@ export default function Generate() {
         <section>
           {fields.map((item, index) => (
             <div className="card" key={item.id}>
-              <Question ref={childRef} lib={item.lib} index={index} />
+              <Question ref={childRef} index={index} />
               <button type="button" className="btn del end" onClick={() => remove(index)}>
                 Delete question
               </button>

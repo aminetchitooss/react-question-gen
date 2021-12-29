@@ -4,7 +4,11 @@ import { QuestionProps } from "../utils/FormData";
 import addBtn from "../assets/Add.png";
 import deleteBtn from "../assets/Delete.png";
 
-const Question = forwardRef(({ lib, index }: QuestionProps, ref) => {
+export type QuestionHandle = {
+  addAnswer: () => void;
+};
+
+const Question = forwardRef<QuestionHandle, QuestionProps>(({ index }: QuestionProps, ref) => {
   useImperativeHandle(ref, () => ({
     addAnswer() {
       handleAddNewAnswer();

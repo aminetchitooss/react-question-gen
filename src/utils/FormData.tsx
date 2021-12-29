@@ -1,7 +1,6 @@
 import * as yup from "yup";
 
 export type QuestionProps = {
-  lib: string;
   index: number;
 };
 
