@@ -11,13 +11,7 @@ const StyledDiv = styled.div`
   width: 100%;
 
   textarea {
-    width: 100%;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border-radius: 8px;
-    border: 2px solid #333;
-    height: calc(100vh - 2rem - 124px - 2rem - 19px - 3rem - 48px - 2rem);
+    height: calc(100vh - 2rem - 124px - 2rem - 24px - 3rem - 48px - 2rem);
   }
 
   button {

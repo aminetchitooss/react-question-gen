@@ -4,7 +4,7 @@ import logo from "../assets/Logo.svg";
 import { COLORS } from "../utils/colors";
 import { useLocation } from "react-router-dom";
 
-const StyledLink = styled.div`
+const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,7 +45,7 @@ export default function Header() {
   const location = useLocation();
 
   return (
-    <StyledLink>
+    <StyledDiv>
       <NavLink to={"/"}>
         <img src={logo} alt="Logo" />
       </NavLink>
@@ -60,6 +60,6 @@ export default function Header() {
           </NavLink>
         </>
       )}
-    </StyledLink>
+    </StyledDiv>
   );
 }
